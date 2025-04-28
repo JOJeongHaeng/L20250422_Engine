@@ -4,8 +4,14 @@
 APlayer::APlayer()
 {
 	Shape = 'P';
-	Location.X = 1;
-	Location.Y = 1;
+	RenderOrder = 7;
+}
+
+APlayer::APlayer(const FVector2D& InVector)
+{
+	Shape = 'P';
+	Location = InVector;
+	RenderOrder = 7;
 }
 
 APlayer::~APlayer()

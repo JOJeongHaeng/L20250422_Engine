@@ -2,11 +2,8 @@
 
 int main()
 {
-	UEngine* Engine = new UEngine;
-
-	Engine->Initialize();
-
-	Engine->Run();
+	GEngine->Initiailze();
+	GEngine->Run();
 
 	return 0;
 }

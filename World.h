@@ -1,5 +1,6 @@
-#pragma once
+﻿#pragma once
 #include <vector>
+#include <string>
 
 class AActor;
 
@@ -12,12 +13,16 @@ public:
 	void Tick();
 	void Render();
 
-	void SpawnActor(AActor* NewActor);
-	void DestroyActor(AActor* DestroyedActor);
+	void Load(std::string filename);
 
+	void SpawnActor(AActor* NewActor);
+	void DestoryActor(AActor* DestroyedActor);
 	std::vector<AActor*>& GetAllActors();
 
 protected:
+	//[][][][][][][]
 	std::vector<AActor*> Actors;
 };
+
+//World has a actor.
 

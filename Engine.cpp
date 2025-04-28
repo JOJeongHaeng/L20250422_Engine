@@ -2,7 +2,11 @@
 #include "World.h"
 #include "Input.h"
 
-UEngine::UEngine() // : World(nullptr)
+
+UEngine* UEngine::Instance = nullptr;
+
+
+UEngine::UEngine() //: World(nullptr)
 {
 	World = nullptr;
 	InputDevice = nullptr;
@@ -13,19 +17,21 @@ UEngine::~UEngine()
 	Terminate();
 }
 
-void UEngine::Initialize()
+void UEngine::Initiailze(std::string filename)
 {
 	InputDevice = new UInput();
 	World = new UWorld();
+	World->Load(filename);
+
 }
 
-inline void UEngine::Run()
+void UEngine::Run()
 {
 	while (true)
 	{
-		Input(); // 입력 받고
-		Tick(); // 일시키고
-		Render(); // 화면에 띄움
+		Input();
+		Tick();
+		Render();
 	}
 }
 
@@ -36,17 +42,19 @@ void UEngine::Terminate()
 		delete World;
 		World = nullptr;
 	}
+
 	if (InputDevice)
 	{
 		delete InputDevice;
 		InputDevice = nullptr;
 	}
-
 }
 
 void UEngine::Input()
 {
 	InputDevice->Tick();
+	//Engine has a Input
+	//키보드, 마우스, 조이스틱, 터치, 자이로 센스
 }
 
 void UEngine::Tick()
